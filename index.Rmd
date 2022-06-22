@@ -1,6 +1,6 @@
 ---
-title: "Datos OIJ"
-author: "Pablo Cesar Quiros"
+title: "tarea3p"
+author: "Pablo"
 date: '2022-06-22'
 output: html_document
 ---
@@ -9,12 +9,23 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 ### Carga de Datos y curacion de datos
+```{r carga de paquetes, message=FALSE}
+### Carga de paquetes:
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(plotly)
+library(DT)
+library(readr)
+library(readxl)
+library(lubridate)
+library(tidyverse)
+```
 
 ```{r, message=FALSE}
-Estadisticas_Poli <- 
-  readxl::read_excel("C:/Users/b78920/Desktop/proce_tarea2/Datos-OIJ/estadisticaspoliciales2021.xls")
+Estadisticas_Poli <-
+  readxl::read_excel("C:/Users/Jose/Downloads/tarea de pablo/estadisticaspoliciales2021.xls")
 
 Estadisticas_Poli$Fecha <- as.Date(Estadisticas_Poli$Fecha, format = "%Y-%m-%d")
 
@@ -70,7 +81,6 @@ Cantidad_de_delito_por_tipo <-
   ggplotly(Cantidad_de_delito_por_tipo) %>%
   config(locale = "es")
 ```
-
 ## Gráfico de barras apiladas de proporción de Delitos por Género
 
 ```{r}
@@ -87,7 +97,7 @@ Proporcion_de_Delito_por_Genero <-
 ggplotly(Proporcion_de_Delito_por_Genero) %>% config(locale = 'es')
 ```
 
-## Gráfico simple de Cantidad de Delitos en San José, Alajuela, Cartago y Heredia 
+## Gráfico simple de Cantidad de Delitos en San José, Alajuela, Cartago y Heredia
 
 ```{r}
 
@@ -102,5 +112,3 @@ Delitos_SanJose_Alajuela_Cartago_Heredia <-
   theme_minimal()
 
 ggplotly(Delitos_SanJose_Alajuela_Cartago_Heredia) %>% config(locale = 'es')
-
-```
